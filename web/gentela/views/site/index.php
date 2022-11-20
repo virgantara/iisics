@@ -52,7 +52,7 @@ setlocale(LC_ALL, 'id_ID', 'id_ID.UTF-8', 'id_ID.8859-1', 'id_ID', 'IND.UTF8', '
           </ul>
           <li><a class="nav-link scrollto" href="#registration">Registration</a></li>
           <li><a class="nav-link scrollto" href="#venue">Venue</a></li>
-          <li><a class="nav-link scrollto" href="#supporters">Sponsors</a></li>
+          <li><a class="nav-link scrollto" href="#supporters">Supporters</a></li>
 
         </li>
 
@@ -304,7 +304,7 @@ setlocale(LC_ALL, 'id_ID', 'id_ID.UTF-8', 'id_ID.8859-1', 'id_ID', 'IND.UTF8', '
 
       <div class="container" data-aos="fade-up">
         <div class="section-header">
-          <h2>Sponsors</h2>
+          <h2>Supported by</h2>
         </div>
 
         <div class="row no-gutters supporters-wrap clearfix" data-aos="zoom-in" data-aos-delay="100">
