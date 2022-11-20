@@ -82,7 +82,7 @@ setlocale(LC_ALL, 'id_ID', 'id_ID.UTF-8', 'id_ID.8859-1', 'id_ID', 'IND.UTF8', '
         
         
       </p>
-      <a href="https://www.youtube.com/watch?v=2LP6CssOrsg" class="glightbox play-btn mb-4"></a>
+      <a href="https://www.youtube.com/watch?v=LkM0EQjiVyM" class="glightbox play-btn mb-4"></a>
       <a href="#about" class="about-btn scrollto">About The Event</a>
     </div>
   </section><!-- End Hero Section -->
