@@ -52,7 +52,7 @@ setlocale(LC_ALL, 'id_ID', 'id_ID.UTF-8', 'id_ID.8859-1', 'id_ID', 'IND.UTF8', '
           </ul>
           <li><a class="nav-link scrollto" href="#registration">Registration</a></li>
           <li><a class="nav-link scrollto" href="#venue">Venue</a></li>
-          <li><a class="nav-link scrollto" href="#supporters">Supporters</a></li>
+          <li><a class="nav-link scrollto" href="#supporters">Supported by</a></li>
 
         </li>
 
