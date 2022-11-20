@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "highcharts": "^10.2.1",
+    "sweetalert2": "^10.14.1"
+  }
+}

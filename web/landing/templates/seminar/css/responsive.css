@@ -1,0 +1,199 @@
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 575px){ 
+	header .relog-xs{
+		text-align: right;
+		margin-bottom: 0 !important;
+	}
+	header .rgt-list{
+		display: none;
+	}
+	header .logo, header .logo a {
+		font-size: 24px;
+	}
+	.hsearch{
+		display: none;
+	}
+	header .account-relog{
+		display: none;
+	} 
+	header .logo, header .logo a { 
+		margin-top: -10px;
+	}
+	.navbar {
+		padding: 0;
+	}
+	.navbar-nav{
+		padding: 1rem .5rem;
+		border-left: 0 !important;
+		border-right: 0 !important;
+	}
+	.navbar-nav .nav-item{
+		border-left: 0 !important;;
+		border-right: 0 !important;;
+	}
+	
+	/* SLIDER */
+	#HomeCarousel .carousel-item{
+		height: 20rem;
+	}
+	#HomeCarousel .carousel-item > img {
+		height: 100%  !important;
+		width: auto !important;
+	}
+	#HomeCarousel .carousel-caption{
+		bottom: 40px;
+	}
+	#HomeCarousel .carousel-caption h1{
+		font-size: 18px !important;
+	}
+	#HomeCarousel .carousel-caption .btn-one{
+		padding: 0 15px;
+		font-size: 13px;
+	}
+	#HomeCarousel .carousel-caption .eventdate{
+		font-size: 14px;
+	}
+	.countdown-timer{
+		margin-bottom: 10px;
+	} 
+	.main-slider .countdown-timer .counter-column{
+		padding: 0 3px;
+		text-align: center;
+	}
+	.main-slider .countdown-timer .counter-column span{
+		font-size: 14px;
+	}
+	.main-slider .countdown-timer .counter-column h6{
+		font-size: 9px;
+		font-weight: 400;
+		line-height: normal;
+		width: 45px;
+		overflow: hidden;
+	}
+	.main-footer .text-left, .main-footer .text-right{
+		text-align: center !important;
+	}
+}
+@media (min-width: 576px) and (max-width: 767px) { 
+	/*
+	.left-header{
+		display: none;
+	}
+	.navbar-brand {
+		margin-left: 1rem;
+	}
+	.main-header .logo > figure > a span{
+		max-width: 300px;
+	}
+	.main-header .address-list,
+	.main-header .btn-reg {
+		display: none;
+	}
+	*/
+	header .relog-xs{
+		text-align: right;
+		margin-bottom: 0 !important;
+	}
+	header .rgt-list{
+		display: none;
+	}
+	.account-relog{
+		display: none;
+	}
+	.hsearch{
+		display: none;
+	}
+	.navbar {
+		padding: 0;
+	}
+	.navbar-nav{ 
+		border-left: 0 !important;
+		border-right: 0 !important;
+	}
+	.navbar-nav .nav-item{
+		border-left: 0 !important;
+		border-right: 0 !important;
+	}
+	/* SLIDER */
+	#HomeCarousel .carousel-item{
+		height: 25rem;
+	}
+	#HomeCarousel .carousel-caption{
+		bottom: 40px;
+	}
+	#HomeCarousel .carousel-caption h1{
+		font-size: 18px !important;
+	}
+	#HomeCarousel .carousel-caption .btn-one{
+		padding: 0 15px;
+		font-size: 13px;
+	}
+	#HomeCarousel .carousel-caption .eventdate{
+		font-size: 14px;
+	}
+	.countdown-timer{
+		margin-bottom: 10px;
+	}
+	.countdown-timer .counter-column{
+		padding: 0 3px;
+		text-align: center;
+	}
+	.countdown-timer .counter-column span{
+		font-size: 14px;
+	}
+	.countdown-timer .counter-column h6{
+		font-size: 9px;
+		font-weight: 400;
+		line-height: normal;
+		width: 45px;
+		overflow: hidden;
+	}
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991px){
+	header .relog-xs{
+		display: none; 
+	}
+	header .rgt-list{
+		display: block;
+	}
+	/*
+	.main-header .logo > figure > a span{
+		max-width: 300px;
+	}
+	.main-header .address-list {
+		display: none;
+	}
+	*/ 
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199px) {
+	header .relog-xs{
+		display: none; 
+	}
+	header .rgt-list{
+		display: block;
+	}
+	/*
+	.main-header .logo > figure > a span{
+		max-width: 350px;
+	}
+	*/ 
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+	header .relog-xs{
+		display: none; 
+	}
+	header .rgt-list{
+		display: block;
+	}
+	/*
+	.main-header .logo > figure > a span{
+		max-width: 350px;
+	}
+	*/ 
+}

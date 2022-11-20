@@ -1,0 +1,425 @@
+*{outline: 0 !important;}
+a:hover, a:focus{ text-decoration: none; }
+body{
+    /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; */
+    font-family: 'Open Sans', sans-serif;
+	font-size: .95rem;
+    font-weight: normal;
+    background-color: #f7f7f7;
+}
+/* ====================================================
+ * PRELOADER 
+ * ==================================================== */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: #31708F;
+    font-weight: 400;
+    padding: 0px;
+    width: 100%;
+    z-index: 9999;
+    text-align: center;
+    opacity: 1 !important;
+    background: none;
+    border-top: none;
+    border-bottom: none;
+   
+}
+.preloader .text {
+    width: 300px;
+    margin: 0 auto;
+    height: 40px;
+    background-color: #FFF3CD;
+    border-top: none;
+    border-left: 1px solid #ffeeba;
+    border-right: 1px solid #ffeeba;
+    border-bottom: 1px solid #ffeeba;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.header {
+    /* #ff9b44 -> #fc6075 */
+	background: #ee7924;
+	background: -moz-linear-gradient(left, #ee7924 0%, #fc6075 100%);
+	background: -webkit-linear-gradient(left, #ee7924 0%, #fc6075 100%);
+	background: -ms-linear-gradient(left, #ee7924 0%, #fc6075 100%);
+	background: linear-gradient(to right, #ee7924 0%, #fc6075 100%);
+	border-bottom: 1px solid transparent;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+    z-index: 1002;
+    padding: .65rem 0;
+    min-height: 60px;
+}
+.header .logo{
+    position: relative;
+    width: 200px;
+    float: left;
+}
+.header .logo .image {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    background: #fff;
+    border-radius: 50%;
+    padding: .25rem;
+    overflow: hidden;
+}
+.header .logo .image img{
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+.header .logo .text{
+    margin-left: 50px;
+    padding-top: 5px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #fff;
+    line-height: 1.65rem;
+}
+.header .logo .text span{
+    font-weight: bold;    
+    color:#fff;
+}
+
+.main-menu {
+    float: right;
+    padding: 0;
+    margin: 0;
+}
+.main-menu li{
+    display: inline-block;
+}
+.main-menu li a{
+    color: #fff;
+}
+.page-wrapper{
+    padding: 90px 30px 30px 30px;
+}
+.page-title{
+    color:#1f1f1f;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.page-title h2{
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.input-group-prepend {
+    margin-right: -1px;
+}
+.input-group-append{
+    margin-left: -1px;
+}
+.input-group-append, .input-group-prepend {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.input-group-append .btn{
+    cursor: pointer;
+}
+.input-group > .input-group-prepend > .input-group-text {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.input-group > .input-group-append > .btn{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.input-group-text {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: .375rem .75rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    text-align: center;
+    white-space: nowrap;
+    background-color:#fff;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+.input-group > .custom-select:not(:first-child), .input-group > .form-control:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: 0;
+}
+.input-group > .custom-select:not(:last-child), .input-group > .form-control:not(:last-child) {
+    border-right: 0;
+}
+.input-group > .form-control:focus, .input-group > .form-control:hover{
+    box-shadow: none;
+    border-color: #ced4da;
+}
+.form-check {
+    margin-bottom: 1.5rem;
+}
+.form-check .form-control{
+    padding: 1rem 1rem;
+    font-size: 1.25rem;
+}
+.form-check .input-group-text {
+    padding: 1rem 1rem;
+    font-size: 1.25rem;
+}
+.btn-outline-white {
+    color: #868e96;
+    background-color: #fff;
+    background-image: none;
+    border-color:#ced4da;
+}
+.btn:focus{
+    box-shadow: none;
+}
+
+/* CARD PROFILE */
+
+.profile-view {
+    position: relative;
+} 
+.profile-img-wrap {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    background: #fff;
+    overflow: hidden;
+}
+.profile-view .profile-img {
+    width: 100px;
+    height: 100px;
+}
+.profile-img {
+    cursor: pointer;
+    height: 80px;
+    margin: 0 auto;
+    position: relative;
+    width: 80px;
+}
+.profile-img-wrap img {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    border: 1px solid #ccc;
+}
+.profile-view .profile-basic {
+    margin-left: 140px;
+    padding-right: 50px;
+}
+.profile-basic {
+    margin-left: 140px;
+}
+.profile-info-left {
+    border-right: 2px dashed #ccc;
+}
+.user-name {
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: .125rem;
+}
+.user-affiliation{
+    font-size: 15px;
+    color: #768e96;
+    margin-bottom: 1rem;
+}
+.user-type{
+    color: #868e96;
+    font-size: 80%;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+.user-id {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: .125rem;
+}
+.user-registered{
+    color: #868e96;
+    font-size: 80%;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+.personal-info {
+    list-style: none;
+    margin-bottom: 0;
+    padding: 0;
+}
+.personal-info li {
+    margin-bottom: .5rem;
+}
+.personal-info li .title {
+    color: #4f4f4f;
+    float: left;
+    font-weight: 500;
+    margin-right: 30px;
+    width: 25%;
+}
+.personal-info li .text {
+    color: #8e8e8e;
+    display: block;
+    overflow: hidden;
+}
+.profile-view .pro-edit {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.edit-icon {
+    background-color: #eee;
+    border: 1px solid #e3e3e3;
+    border-radius: 24px;
+    color: #bbb;
+    float: right;
+    font-size: 12px;
+    line-height: 24px;
+    min-height: 26px;
+    text-align: center;
+    width: 26px;
+}
+
+.footer{
+    font-size: 13px;
+    background-color: #f7f7f7;
+    color: #848b95;
+    margin-top: 30px;
+    padding: 30px 0;
+}
+.footer a{
+    color: #848b95;
+}
+.footer a:focus, .footer a:hover{
+    text-decoration: underline;
+}
+@media (max-width: 767.98px) {
+    .profile-info-left {
+        border-right: none;
+        border-bottom: 2px dashed #ccc;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+
+/* USING SCANNER LASER */
+
+.scanner-laser{
+    position: absolute;
+    margin: 20px;
+    height: 30px;
+    width: 30px;
+}
+.laser-leftTop{
+    top: 0;
+    left: 0;
+    border-top: solid red 3px;
+    border-left: solid red 3px;
+}
+.laser-leftBottom{
+    bottom: 0;
+    left: 0;
+    border-bottom: solid red 3px;
+    border-left: solid red 3px;
+}
+.laser-rightTop{
+    top: 0;
+    right: 0;
+    border-top: solid red 3px;
+    border-right: solid red 3px;
+}
+.laser-rightBottom{
+    bottom: 0;
+    right: 0;
+    border-bottom: solid red 3px;
+    border-right: solid red 3px;
+}
+
+#webcodecam-canvas{
+    width: 200px !important;
+    height: 200px !important;
+}
+.cam-wrapper{
+    margin: 0 auto;
+    text-align: center;
+    width: 200px;
+    margin-bottom: 1rem;
+}
+.qr-scanner{
+    width: 200px;
+    height: 200px;
+}
+.profile-info-left.no-border {
+    border: none !important;
+}
+.line-placeholder {
+    display: block;
+    height: 15px;
+    background:#cccccC;
+}
+
+.user-name .line-placeholder{
+    margin-bottom: 1rem;
+    background:#b1b1b1;
+}
+.user-id .line-placeholder{
+    margin-bottom: 1rem;
+    background:#b1b1b1;
+}
+
+@media (max-width: 575px){
+    .header .logo{
+        float: left; 
+        width: auto;
+    }
+    .header .logo .image {
+        width: 30px;
+        height: 30px;
+        margin-top: 5px;
+    }
+    .header .logo .text {
+        font-size: 16px;
+        font-weight: 600;
+        margin-left: 40px;
+        padding-top: 5px;
+    }
+    .main-menu{
+        float: right;
+    }
+    .nav-link{
+        padding: .5rem;
+    }
+    .page-wrapper {
+        padding: 90px 10px 0 10px;
+    }
+    .text-menu{
+        display: none;
+    }
+    .profile-img-wrap {
+        position: relative;
+        height: 40px;
+    }
+    .profile-img{
+        display: none;
+    }
+    .profile-view .profile-basic {
+        margin-left: 0;
+        padding-right: 0;
+    }
+    .footer {
+        margin-top: 0 !important;
+        padding-top: 15px !important;
+    }
+}
