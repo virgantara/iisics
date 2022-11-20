@@ -69,7 +69,7 @@ class TopicsController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success', "Data saved");
-            return $this->redirect(['view', 'id' => $model->topic_id]);
+            return $this->redirect(['index']);
         }
 
         return $this->render('create', [
@@ -90,7 +90,7 @@ class TopicsController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success', "Data saved");
-            return $this->redirect(['view', 'id' => $model->topic_id]);
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [

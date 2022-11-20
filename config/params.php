@@ -52,7 +52,7 @@ return [
      * You will send emails to users from this address.
      */
     'supportEmail' => 'pptik@unida.gontor.ac.id',
-     'shortname' => 'SNST',
+     'shortname' => 'IISICS',
      'icon-framework' => 'fa',
      'owner' => 'Integrated System',
 ];

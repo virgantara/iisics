@@ -161,7 +161,7 @@ class SpeakersController extends Controller
 
                     $transaction->commit();
                     Yii::$app->session->setFlash('success', "Data saved");
-                    return $this->redirect(['view', 'id' => $model->speaker_id]);
+                    return $this->redirect(['index']);
                 }
 
                 else{
@@ -235,7 +235,7 @@ class SpeakersController extends Controller
 
                     $transaction->commit();
                     Yii::$app->session->setFlash('success', "Data saved");
-                    return $this->redirect(['view', 'id' => $model->speaker_id]);
+                    return $this->redirect(['index']);
                 }
 
                 else{

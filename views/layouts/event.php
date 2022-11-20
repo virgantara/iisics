@@ -11,7 +11,7 @@ Landing2Asset::register($this);
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="description" content="">
 		<meta name="author" content="">
-		<title>Seminar Nasional Sains dan Teknologi</title>
+		<title>Islamic International Conference on International Studies and Communication Science (IISICS)</title>
 		<?= Html::csrfMetaTags() ?>
 		<?php $this->head(); ?>
 	</head>

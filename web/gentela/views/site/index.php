@@ -13,7 +13,7 @@ setlocale(LC_ALL, 'id_ID', 'id_ID.UTF-8', 'id_ID.8859-1', 'id_ID', 'IND.UTF8', '
       <div id="logo" class="me-auto">
         <!-- Uncomment below if you prefer to use a text logo -->
         <!-- <h1><a href="index.html">The<span>Event</span></a></h1>-->
-        <a href="<?=Url::home()?>" class="scrollto"><img src="<?=Yii::$app->view->theme->baseUrl;?>/images/logo_snst_landscape.png" alt="Logo SNST" title=""></a>
+        <a href="<?=Url::home()?>" class="scrollto"><img src="<?=Yii::$app->view->theme->baseUrl;?>/images/logo_landscape.png" alt="Logo SNST" title="" ></a>
       </div>
 
       <nav id="navbar" class="navbar order-last order-lg-0">
@@ -55,10 +55,7 @@ setlocale(LC_ALL, 'id_ID', 'id_ID.UTF-8', 'id_ID.8859-1', 'id_ID', 'IND.UTF8', '
           <li><a class="nav-link scrollto" href="#supporters">Sponsors</a></li>
 
         </li>
-        <li class="dropdown"><a href="#"><span>Previous Events</span> <i class="bi bi-chevron-down"></i></a>
-          <ul>
-            <li><a href="http://snst.unida.gontor.ac.id" target="_blank">SNST 2020</a></li>
-          </ul>
+
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -75,11 +72,11 @@ setlocale(LC_ALL, 'id_ID', 'id_ID.UTF-8', 'id_ID.8859-1', 'id_ID', 'IND.UTF8', '
       <p class="mb-4 pb-0">
         <?php 
         if($seminar['date_start']->sys_content == $seminar['date_end']->sys_content){
-          echo date('d',strtotime($seminar['date_start']->sys_content)).' '.date('F Y',strtotime($seminar['date_start']->sys_content)).', '.$seminar['city']->sys_content;
+          echo date('F dS',strtotime($seminar['date_start']->sys_content)).' '.date(', Y',strtotime($seminar['date_start']->sys_content)).', '.$seminar['city']->sys_content;
         }
 
         else{
-          echo date('d',strtotime($seminar['date_start']->sys_content)).' - '.date('d',strtotime($seminar['date_end']->sys_content)).' '.date('F Y',strtotime($seminar['date_start']->sys_content)).', '.$seminar['city']->sys_content;
+          echo date('dS',strtotime($seminar['date_start']->sys_content)).' - '.date('dS',strtotime($seminar['date_end']->sys_content)).' '.date('F Y',strtotime($seminar['date_start']->sys_content)).', '.$seminar['city']->sys_content;
         }
          ?>
         
