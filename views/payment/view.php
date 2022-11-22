@@ -71,7 +71,7 @@ $list_payment_validation = MyHelper::paymentValidation();
                     return (!empty($data->abs) ? $data->abs->abs_title : null);
                 }
             ],
-            'pay_created',
+            // 'pay_created',
             'pay_date',
 
             'pay_method',

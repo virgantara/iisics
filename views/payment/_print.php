@@ -37,7 +37,7 @@ $font_size = '1.6em';
     <tr>
         <td style="text-align:left;font-size:<?=$font_size?>">Payment date</td>
         <td style="text-align:left;font-size:<?=$font_size?>" >: </td>
-        <td style="text-align:left;font-size:<?=$font_size?>"><?=(!empty($model->pay_created) ? date('Y-m-d',strtotime($model->pay_created)) : "")?></td>
+        <td style="text-align:left;font-size:<?=$font_size?>"><?=(!empty($model->pay_date) ? date('Y-m-d H:i:s',strtotime($model->pay_date)) : "")?></td>
     </tr>
 </table>
 <br><br>

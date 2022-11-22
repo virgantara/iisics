@@ -61,8 +61,8 @@ $list_payment_method = MyHelper::paymentMethod();
                     return (!empty($data->abs) ? $data->abs->abs_title : null);
                 }
             ],
-            'pay_created',
-            // 'pay_date',
+            // 'pay_created',
+            'pay_date',
             //'pay_file',
             [
                 'attribute' => 'pay_method',
