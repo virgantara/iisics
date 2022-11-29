@@ -364,7 +364,7 @@ class PapersController extends Controller
                     }
 
                     else{
-                        throw new Exception(\app\helpers\MyHelper::logError($model));
+                        throw new \Exception(\app\helpers\MyHelper::logError($model));
                     }
                 }
                 catch (\Exception $e) {
@@ -450,7 +450,7 @@ class PapersController extends Controller
                     }
 
                     else{
-                        throw new Exception(\app\helpers\MyHelper::logError($model));
+                        throw new \Exception(\app\helpers\MyHelper::logError($model));
                     }
                 }
                 catch (\Exception $e) {
