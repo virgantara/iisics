@@ -60,7 +60,7 @@ class Papers extends \yii\db\ActiveRecord
             [['paper_raw', 'paper_review_file', 'paper_review_file_raw', 'paper_revised_file', 'paper_revised_file_raw', 'paper_final_file', 'paper_final_file_raw'], 'string', 'max' => 50],
             [['paper_ext', 'paper_review_file_ext', 'paper_revised_file_ext', 'paper_final_file_ext'], 'string', 'max' => 6],
             [['paper_status', 'paper_recomendation'], 'string', 'max' => 25],
-            [['pid'], 'unique'],
+            [['abs_id','pid'],'unique','targetAttribute'=>['abs_id','pid']],
             [['abs_id'], 'exist', 'skipOnError' => true, 'targetClass' => Abstracts::className(), 'targetAttribute' => ['abs_id' => 'abs_id']],
             [['pid'], 'exist', 'skipOnError' => true, 'targetClass' => Participants::className(), 'targetAttribute' => ['pid' => 'pid']],
             [['paper_file'], 'file', 'skipOnEmpty' => true, 'extensions' => ['pdf'], 'maxSize' => 1024 * 1024 * 5],
