@@ -22,6 +22,8 @@ use Endroid\QrCode\Logo\Logo;
 use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
 use Endroid\QrCode\Writer\PngWriter;
 
+use yii\web\UploadedFile;
+
 /**
  * PaymentController implements the CRUD actions for Payment model.
  */
@@ -42,7 +44,7 @@ class PaymentController extends Controller
                 'rules' => [
                     [
                         'actions' => [
-                            'index','print'
+                            'index','print','update',
                         ],
                         'allow' => true,
                         'roles' => ['admin','participant'],
@@ -375,15 +377,109 @@ class PaymentController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('success', "Data saved");
-            return $this->redirect(['view', 'id' => $model->pay_id]);
+        $model = $this->findModel($id);
+        if(!Yii::$app->user->isGuest){
+            if(Yii::$app->user->identity->access_role == 'participant'){
+                if($model->pid != Yii::$app->user->identity->pid){
+                    Yii::$app->session->setFlash('danger', "This file does not belong to you");
+                    return $this->redirect(['site/index']);
+                }
+            }
         }
 
+        $abs = Abstracts::findOne($model->abs_id);;
+
+        $s3config = Yii::$app->params['s3'];
+        $s3 = new \Aws\S3\S3Client($s3config);
+        
+        $errors = '';
+        if($abs->abs_status != 'Accepted'){
+            Yii::$app->session->setFlash('danger', "This abstract has not been accepted");
+            return $this->redirect(['view', 'id' => $abs->abs_id]);
+        }
+        
+        if(Yii::$app->user->identity->access_role == ('participant')){
+            if($abs->pid != Yii::$app->user->identity->pid){
+                Yii::$app->session->setFlash('danger', "This file does not belong to you");
+                return $this->redirect(['index']);
+            }
+        }
+
+        $pay_file = $model->pay_file;
+
+
+        if ($model->load(Yii::$app->request->post())) {
+            
+            $connection = \Yii::$app->db;
+            $transaction = $connection->beginTransaction();            
+            try {
+
+                $model->pay_file = UploadedFile::getInstance($model, 'pay_file');
+                if ($model->pay_file) {
+                    
+                    $file_name = 'PAYPROOF-'.'-'.date('YmdHis').'-'.$abs->abs_id.'.'.$model->pay_file->extension;
+                    $s3_path = $model->pay_file->tempName;
+                    $mime_type = $model->pay_file->type;
+                                    
+                    $key = 'snst/'.date('Y').'/payment-proof/'.$file_name;
+                     
+                    $insert = $s3->putObject([
+                         'Bucket' => 'seminar',
+                         'Key'    => $key,
+                         'Body'   => 'This is the Body',
+                         'SourceFile' => $s3_path,
+                         'ContentType' => $mime_type
+                    ]);
+
+                    
+                    $plainUrl = $s3->getObjectUrl('seminar', $key);
+                    $model->pay_file = $plainUrl;
+                   
+                }
+            
+
+                if(empty($model->pay_file)){
+                    $model->pay_file = $pay_file;
+                }
+
+                if($model->save()){
+                    $system = System::findOne([
+                        'sys_name' => 'seminar_finance_email'
+                    ]);
+
+                    $email = (!empty($system) ? $system->sys_content : 'pptik@unida.gontor.ac.id');
+
+                    $emailTemplate = $this->renderPartial('email_payment_proof',[
+                        'model' => $model,
+                    ]);
+
+                    Yii::$app->mailer->compose()
+                        ->setTo($email)
+                        ->setFrom([Yii::$app->params['supportEmail'] => 'SNST Finance'])
+                        ->setSubject('[SNST] Payment Proof Updated')
+                        ->setHtmlBody($emailTemplate)
+                        ->send();
+                    $transaction->commit();
+                    Yii::$app->session->setFlash('success', "Data saved");
+                    return $this->redirect(['payment/view','id'=>$model->pay_id]);
+                }
+
+                else{
+                    throw new \Exception(\app\helpers\MyHelper::logError($model));
+                }
+            }
+            catch (\Exception $e) {
+                $transaction->rollBack();
+                $errors .= $e->getMessage();
+                Yii::$app->session->setFlash('danger', $errors);
+            }
+        }
+
+        $model->pay_currency = 'IDR';
         return $this->render('update', [
             'model' => $model,
+            'abs' => $abs
         ]);
     }
 
@@ -396,7 +492,17 @@ class PaymentController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        if(!Yii::$app->user->isGuest){
+            if(Yii::$app->user->identity->access_role == 'participant'){
+                if($model->pid != Yii::$app->user->identity->pid){
+                    Yii::$app->session->setFlash('danger', "This file does not belong to you");
+                    return $this->redirect(['site/index']);
+                }
+            }
+        }
+
+        $model->delete();
 
         return $this->redirect(['index']);
     }

@@ -10,16 +10,17 @@ $this->params['breadcrumbs'][] = ['label' => 'Payments', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->pay_id, 'url' => ['view', 'id' => $model->pay_id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
-<h3><?= Html::encode($this->title) ?></h3>
+
 <div class="row">
     <div class="col-md-12">
-        <div class="panel">
-            <div class="panel-heading">
-                <h3 class="panel-title"><?= Html::encode($this->title) ?></h3>
+        <div class="x_panel">
+            <div class="x_title">
+                <h3 class=""><?= Html::encode($this->title) ?></h3>
             </div>
-            <div class="panel-body ">
+            <div class="x_content ">
     <?= $this->render('_form', [
         'model' => $model,
+         'abs' => $abs
     ]) ?>
            </div>
         </div>

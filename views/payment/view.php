@@ -21,10 +21,17 @@ $list_payment_validation = MyHelper::paymentValidation();
         <div class="panel">
             <div class="panel-heading">
                 <?php 
-                if(Yii::$app->user->can('finance')){
+                if(Yii::$app->user->can('finance') || Yii::$app->user->can('theCreator')){
                     echo Html::a('<i class="fa fa-check"></i> Validation', ['validate', 'id' => $model->pay_id], [
                         'class' => 'btn btn-primary',
                         'id' => 'btn-validate'
+                        
+                    ]);
+                }
+                echo '&nbsp;';
+                if($model->pay_status == 'Invalid'){
+                    echo Html::a('<i class="fa fa-edit"></i> Update', ['update', 'id' => $model->pay_id], [
+                        'class' => 'btn btn-success',
                         
                     ]);
                 }
@@ -38,7 +45,11 @@ $list_payment_validation = MyHelper::paymentValidation();
             </div>
 
             <div class="panel-body ">
-        
+<p>
+    <div class="alert alert-danger">
+        After Approval, this payment proof will be unable to be updated.
+    </div>
+</p>
 <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -71,7 +82,7 @@ $list_payment_validation = MyHelper::paymentValidation();
                     return (!empty($data->abs) ? $data->abs->abs_title : null);
                 }
             ],
-            // 'pay_created',
+            'pay_created',
             'pay_date',
 
             'pay_method',
@@ -86,7 +97,7 @@ $list_payment_validation = MyHelper::paymentValidation();
             ],
             // 'pay_info:ntext',
             'pay_status',
-            'valid_by',
+            // 'valid_by',
             'valid_by_name',
             [
                 'attribute' => 'pay_file',
@@ -112,6 +123,26 @@ $list_payment_validation = MyHelper::paymentValidation();
 </div>
 
 
+<?php
+        yii\bootstrap\Modal::begin(['id' =>'modal','size'=>'modal-lg',]);
+        echo '<div class="text-center">';
+        echo '<img width="100%" id="img">';
+        echo '</div>';
+        yii\bootstrap\Modal::end();
+    ?>
+<?php
+
+$this->registerJs("
+
+
+$(document).on('click','.popupModal',function(e){
+    e.preventDefault();
+    var m = $('#modal').modal('show').find('#img');
+
+    m.attr('src',$(this).data('item'))
+})
+");
+?>
 
 <?php
 

@@ -40,7 +40,7 @@ $list_payment_method = MyHelper::paymentMethod();
                     if(!empty($data->pay_file)){
                         // // return Html::img(Url::to(['simak-mastermahasiswa/foto','id'=>$data->id]),['width'=>'70px']);
                         // return Html::a(Html::img($data->foto_path,['width'=>'70px']),'',['class'=>'popupModal','data-pjax'=>0,'data-item'=>$data->foto_path]);
-                        return Html::a(Html::img(Url::to(['payment/foto','id'=>$data->pay_id]),['width'=>'120px']),'',['class'=>'popupModal','data-pjax'=>0,'data-item'=>Url::to(['payment/foto','id'=>$data->pay_id])]);
+                        return Html::a(Html::img(Url::to(['payment/foto','id'=>$data->pay_id]),['width'=>'120px','height'=>'60px']),'',['class'=>'popupModal','data-pjax'=>0,'data-item'=>Url::to(['payment/foto','id'=>$data->pay_id])]);
                     }
                         
                     else
@@ -61,8 +61,8 @@ $list_payment_method = MyHelper::paymentMethod();
                     return (!empty($data->abs) ? $data->abs->abs_title : null);
                 }
             ],
-            // 'pay_created',
-            'pay_date',
+            'pay_created',
+            // 'pay_date',
             //'pay_file',
             [
                 'attribute' => 'pay_method',
@@ -79,11 +79,38 @@ $list_payment_method = MyHelper::paymentMethod();
                     return MyHelper::formatRupiah($data->pay_nominal,2);
                 }
             ],
+            [
+                'attribute' => 'pay_status',
+                'format' => 'raw',
+                'filter' => \app\helpers\MyHelper::paymentValidation(),
+                'value' => function($data){
+                    $html = '<span class="label label-danger">'.$data->pay_status.'</span>';
+                    if($data->pay_status == 'Valid'){
+                        $html = '<span class="label label-success">'.$data->pay_status.'</span>';
+                    }
+
+                    return $html;
+                }
+            ],
             //'pay_info:ntext',
-            //'pay_status',
             //'valid_by',
             //'valid_by_name',
-    ['class' => 'yii\grid\ActionColumn']
+    [
+        'class' => 'yii\grid\ActionColumn',
+        
+        'visibleButtons' => [
+            
+            // 'view' => function ($model, $key, $index) {
+            //     return $model->access_role == 'admin';
+            // },
+            'delete' => function ($model, $key, $index) {
+                return $model->pay_status != 'Valid';
+            },
+            'update' => function ($model, $key, $index) {
+                return $model->pay_status != 'Valid';
+            },
+        ]
+    ]
 ];?>    
 <?= GridView::widget([
         'dataProvider' => $dataProvider,

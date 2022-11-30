@@ -66,6 +66,7 @@ class PaymentSearch extends Payment
             'pay_date' => $this->pay_date,
             'pay_nominal' => $this->pay_nominal,
             'valid_by' => $this->valid_by,
+            'pay_status' => $this->pay_status,
         ]);
 
         $query->andFilterWhere(['like', 'pay_file', $this->pay_file])
@@ -76,7 +77,6 @@ class PaymentSearch extends Payment
             ->andFilterWhere(['like', 'pay_destination', $this->pay_destination])
             ->andFilterWhere(['like', 'pay_currency', $this->pay_currency])
             ->andFilterWhere(['like', 'pay_info', $this->pay_info])
-            ->andFilterWhere(['like', 'pay_status', $this->pay_status])
             ->andFilterWhere(['like', 'valid_by_name', $this->valid_by_name]);
 
         if(Yii::$app->user->identity->access_role == 'participant'){
