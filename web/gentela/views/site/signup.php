@@ -25,6 +25,8 @@ input[type="radio"] {
 </style>
 <div class="site-signup">
     <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
+    <?php echo $form->errorSummary($participant,['header'=>'<div class="alert alert-danger">','footer'=>'</div>']); ?>
+    <?php echo $form->errorSummary($model,['header'=>'<div class="alert alert-danger">','footer'=>'</div>']); ?>
     <h1 class="col-md-offset-3 "><?= Html::encode($this->title) ?></h1>
     <div class="row">
         <div class="col-md-offset-3 col-md-6 well">
