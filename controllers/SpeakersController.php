@@ -139,7 +139,7 @@ class SpeakersController extends Controller
                     $s3_path = $model->speaker_image->tempName;
                     $mime_type = $model->speaker_image->type;
                                     
-                    $key = 'snst/'.date('Y').'/speakers/'.$file_name;
+                    $key = 'iicics/'.date('Y').'/speakers/'.$file_name;
                      
                     $insert = $s3->putObject([
                          'Bucket' => 'seminar',
@@ -210,7 +210,7 @@ class SpeakersController extends Controller
                     $s3_path = $model->speaker_image->tempName;
                     $mime_type = $model->speaker_image->type;
                                     
-                    $key = 'snst/'.date('Y').'/speakers/'.$file_name;
+                    $key = 'iicics/'.date('Y').'/speakers/'.$file_name;
                      
                     $insert = $s3->putObject([
                          'Bucket' => 'seminar',

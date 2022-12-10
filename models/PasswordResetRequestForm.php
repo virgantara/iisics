@@ -62,8 +62,8 @@ class PasswordResetRequestForm extends Model
 
         Yii::$app->mailer->compose()
         ->setTo($to)
-        ->setFrom([Yii::$app->params['supportEmail'] => 'SNST Account'])
-        ->setSubject('[SNST] Reset Password')
+        ->setFrom([Yii::$app->params['supportEmail'] => 'IICICS Account'])
+        ->setSubject('[IICICS] Reset Password')
         ->setHtmlBody($message)
         ->send();
         return true;

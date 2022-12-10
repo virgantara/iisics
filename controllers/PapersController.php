@@ -113,8 +113,8 @@ class PapersController extends Controller
                     }
                     Yii::$app->mailer->compose()
                     ->setTo($email)
-                    ->setFrom([Yii::$app->params['supportEmail'] => 'SNST Notification'])
-                    ->setSubject('[SNST] Fullpaper Announcement')
+                    ->setFrom([Yii::$app->params['supportEmail'] => 'IICICS Notification'])
+                    ->setSubject('[IICICS] Fullpaper Announcement')
                     ->setHtmlBody($emailTemplate)
                     ->send();
                     $transaction->commit();
@@ -339,7 +339,7 @@ class PapersController extends Controller
                         $s3_path = $model->paper_file->tempName;
                         $mime_type = $model->paper_file->type;
                                         
-                        $key = 'snst/'.date('Y').'/fullpaper/'.$file_name;
+                        $key = 'iicics/'.date('Y').'/fullpaper/'.$file_name;
                          
                         $insert = $s3->putObject([
                              'Bucket' => 'seminar',
@@ -422,7 +422,7 @@ class PapersController extends Controller
                         $s3_path = $model->paper_file->tempName;
                         $mime_type = $model->paper_file->type;
                                         
-                        $key = 'snst/'.date('Y').'/fullpaper/'.$file_name;
+                        $key = 'iicics/'.date('Y').'/fullpaper/'.$file_name;
                          
                         $insert = $s3->putObject([
                              'Bucket' => 'seminar',

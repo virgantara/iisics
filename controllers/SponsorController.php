@@ -138,7 +138,7 @@ class SponsorController extends Controller
                     $s3_path = $model->file_path->tempName;
                     $mime_type = $model->file_path->type;
                                     
-                    $key = 'snst/'.date('Y').'/sponsor/'.$file_name;
+                    $key = 'iicics/'.date('Y').'/sponsor/'.$file_name;
                      
                     $insert = $s3->putObject([
                          'Bucket' => 'seminar',
@@ -208,7 +208,7 @@ class SponsorController extends Controller
                     $s3_path = $model->file_path->tempName;
                     $mime_type = $model->file_path->type;
                                     
-                    $key = 'snst/'.date('Y').'/sponsor/'.$file_name;
+                    $key = 'iicics/'.date('Y').'/sponsor/'.$file_name;
                      
                     $insert = $s3->putObject([
                          'Bucket' => 'seminar',

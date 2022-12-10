@@ -211,7 +211,7 @@ class CertificateTypeController extends Controller
                     $s3_path = $model->certificate_template->tempName;
                     $mime_type = $model->certificate_template->type;
                                     
-                    $key = 'snst/'.date('Y').'/certificate/template/'.$file_name;
+                    $key = 'iicics/'.date('Y').'/certificate/template/'.$file_name;
                      
                     $insert = $s3->putObject([
                          'Bucket' => 'seminar',
@@ -234,7 +234,7 @@ class CertificateTypeController extends Controller
                     $s3_path = $model->certificate_font_style->tempName;
                     $mime_type = $model->certificate_font_style->type;
                                     
-                    $key = 'snst/'.date('Y').'/certificate/fonts/'.$file_name;
+                    $key = 'iicics/'.date('Y').'/certificate/fonts/'.$file_name;
                      
                     $insert = $s3->putObject([
                          'Bucket' => 'seminar',
@@ -304,7 +304,7 @@ class CertificateTypeController extends Controller
                     $s3_path = $model->certificate_template->tempName;
                     $mime_type = $model->certificate_template->type;
                                     
-                    $key = 'snst/'.date('Y').'/certificate/template/'.$file_name;
+                    $key = 'iicics/'.date('Y').'/certificate/template/'.$file_name;
                      
                     $insert = $s3->putObject([
                          'Bucket' => 'seminar',
@@ -331,7 +331,7 @@ class CertificateTypeController extends Controller
                     $s3_path = $model->certificate_font_style->tempName;
                     $mime_type = $model->certificate_font_style->type;
                                     
-                    $key = 'snst/'.date('Y').'/certificate/fonts/'.$file_name;
+                    $key = 'iicics/'.date('Y').'/certificate/fonts/'.$file_name;
                      
                     $insert = $s3->putObject([
                          'Bucket' => 'seminar',

@@ -149,8 +149,8 @@ class AbstractReviewController extends Controller
                 ]);
                 Yii::$app->mailer->compose()
                 ->setTo($email)
-                ->setFrom([Yii::$app->params['supportEmail'] => 'SNST Technical Program Committee'])
-                ->setSubject('[SNST] Reviewer Assignment')
+                ->setFrom([Yii::$app->params['supportEmail'] => 'IICICS Technical Program Committee'])
+                ->setSubject('[IICICS] Reviewer Assignment')
                 ->setHtmlBody($emailTemplate)
                 ->send();
                 $transaction->commit();
@@ -267,7 +267,7 @@ class AbstractReviewController extends Controller
                     $s3_path = $model->file_path->tempName;
                     $mime_type = $model->file_path->type;
                                     
-                    $key = 'snst/'.date('Y').'/abstract-review/'.$file_name;
+                    $key = 'iicics/'.date('Y').'/abstract-review/'.$file_name;
                      
                     $insert = $s3->putObject([
                          'Bucket' => 'seminar',

@@ -136,8 +136,8 @@ class SignupForm extends Model
 
         Yii::$app->mailer->compose()
         ->setTo($to)
-        ->setFrom([Yii::$app->params['supportEmail'] => 'SNST Registration'])
-        ->setSubject('[SNST] Registration')
+        ->setFrom([Yii::$app->params['supportEmail'] => 'IICICS Registration'])
+        ->setSubject('[IICICS] Registration')
         ->setHtmlBody($message)
         ->send();
         return true;

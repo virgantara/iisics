@@ -171,8 +171,8 @@ class PaperReviewController extends Controller
 
                 Yii::$app->mailer->compose()
                 ->setTo($email)
-                ->setFrom([Yii::$app->params['supportEmail'] => 'SNST Technical Program Committee'])
-                ->setSubject('[SNST] Fullpaper Reviewer Assignment')
+                ->setFrom([Yii::$app->params['supportEmail'] => 'IICICS Technical Program Committee'])
+                ->setSubject('[IICICS] Fullpaper Reviewer Assignment')
                 ->setHtmlBody($emailTemplate)
                 ->send();
                 $transaction->commit();

@@ -106,7 +106,7 @@ use yii\helpers\Url;
     <table class="header-row" width="378" cellspacing="0" cellpadding="0" border="0" style="table-layout: fixed;"><tbody><tr><td class="header-row-td" width="378" style="font-family: Arial, sans-serif; font-weight: normal; line-height: 19px; color: #478fca; margin: 0px; font-size: 18px; padding-bottom: 10px; padding-top: 15px;" valign="top" align="left">Congratulations</td></tr></tbody></table>
     <div style="font-family: Arial, sans-serif; line-height: 20px; color: #444444; font-size: 13px;">
     	Dear, <?=$model->p->name2?><br>
-      Your abstract entitled <br><b style="color: #777777;"><?=$model->abs_title?></b> has been <b style="color: #777777;">accepted</b> to present in SNST <?=date('Y')?>
+      Your abstract entitled <br><b style="color: #777777;"><?=$model->abs_title?></b> has been <b style="color: #777777;">accepted</b> to present in IICICS <?=date('Y')?>
       <br>
       <br>
       Review results:<br>

@@ -117,7 +117,7 @@ class AbstractsController extends Controller
                     $s3_path = $model->pay_file->tempName;
                     $mime_type = $model->pay_file->type;
                                     
-                    $key = 'snst/'.date('Y').'/payment-proof/'.$file_name;
+                    $key = 'iicics/'.date('Y').'/payment-proof/'.$file_name;
                      
                     $insert = $s3->putObject([
                          'Bucket' => 'seminar',
@@ -151,8 +151,8 @@ class AbstractsController extends Controller
 
                     Yii::$app->mailer->compose()
                         ->setTo($email)
-                        ->setFrom([Yii::$app->params['supportEmail'] => 'SNST Finance'])
-                        ->setSubject('[SNST] Payment Proof Uploaded')
+                        ->setFrom([Yii::$app->params['supportEmail'] => 'IICICS Finance'])
+                        ->setSubject('[IICICS] Payment Proof Uploaded')
                         ->setHtmlBody($emailTemplate)
                         ->send();
                     $transaction->commit();
@@ -227,8 +227,8 @@ class AbstractsController extends Controller
                     }
                     Yii::$app->mailer->compose()
                     ->setTo($email)
-                    ->setFrom([Yii::$app->params['supportEmail'] => 'SNST Notification'])
-                    ->setSubject('[SNST] Announcement')
+                    ->setFrom([Yii::$app->params['supportEmail'] => 'IICICS Notification'])
+                    ->setSubject('[IICICS] Announcement')
                     ->setHtmlBody($emailTemplate)
                     ->send();
                     $transaction->commit();

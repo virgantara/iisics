@@ -471,8 +471,8 @@ class SiteController extends Controller
         $emailTemplate = $this->renderPartial('email_signup');
         Yii::$app->mailer->compose()
         ->setTo($email)
-        ->setFrom([Yii::$app->params['supportEmail'] => 'SNST '.date('Y')])
-        ->setSubject('Registration SNST')
+        ->setFrom([Yii::$app->params['supportEmail'] => 'IICICS '.date('Y')])
+        ->setSubject('Registration IICICS')
         ->setHtmlBody($emailTemplate)
         ->send();
     }

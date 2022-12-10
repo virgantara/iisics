@@ -128,7 +128,7 @@ class PaymentController extends Controller
             $imgdata = Yii::getAlias('@webroot').'/ace/assets/images/logo_snst_portrait.jpg';
             $pdf->Image($imgdata,180,10,18);
 
-            $qr_content = "SNST ";
+            $qr_content = "IICICS ";
             $qr_content .= (!empty($system) ? date('Y',strtotime($system->sys_content)) : date('Y'));
             $qr_content .= "\ndigitally signed by Treasurer\n";
             $qr_content .= (!empty($chairman_payment) ? $chairman_payment->sys_content : 'PIC Pembayaran Belum Diisi');
@@ -259,8 +259,8 @@ class PaymentController extends Controller
                     }
                     Yii::$app->mailer->compose()
                     ->setTo($email)
-                    ->setFrom([Yii::$app->params['supportEmail'] => 'SNST Finance'])
-                    ->setSubject('[SNST] Payment Information')
+                    ->setFrom([Yii::$app->params['supportEmail'] => 'IICICS Finance'])
+                    ->setSubject('[IICICS] Payment Information')
                     ->setHtmlBody($emailTemplate)
                     ->send();
                     $transaction->commit();
@@ -422,7 +422,7 @@ class PaymentController extends Controller
                     $s3_path = $model->pay_file->tempName;
                     $mime_type = $model->pay_file->type;
                                     
-                    $key = 'snst/'.date('Y').'/payment-proof/'.$file_name;
+                    $key = 'iicics/'.date('Y').'/payment-proof/'.$file_name;
                      
                     $insert = $s3->putObject([
                          'Bucket' => 'seminar',
@@ -456,8 +456,8 @@ class PaymentController extends Controller
 
                     Yii::$app->mailer->compose()
                         ->setTo($email)
-                        ->setFrom([Yii::$app->params['supportEmail'] => 'SNST Finance'])
-                        ->setSubject('[SNST] Payment Proof Updated')
+                        ->setFrom([Yii::$app->params['supportEmail'] => 'IICICS Finance'])
+                        ->setSubject('[IICICS] Payment Proof Updated')
                         ->setHtmlBody($emailTemplate)
                         ->send();
                     $transaction->commit();

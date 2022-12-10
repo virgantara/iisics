@@ -55,10 +55,7 @@ setlocale(LC_ALL, 'id_ID', 'id_ID.UTF-8', 'id_ID.8859-1', 'id_ID', 'IND.UTF8', '
           <li><a class="nav-link scrollto" href="#supporters">Sponsors</a></li>
 
         </li>
-        <li class="dropdown"><a href="#"><span>Previous Events</span> <i class="bi bi-chevron-down"></i></a>
-          <ul>
-            <li><a href="http://snst.unida.gontor.ac.id" target="_blank">SNST 2020</a></li>
-          </ul>
+        
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
