@@ -40,10 +40,11 @@ class PaperReview extends \yii\db\ActiveRecord
             [['rev_id', 'paper_id', 'abs_id'], 'integer'],
             [['comment_from_reviewer', 'response_from_author'], 'string'],
             [['acceptance_status'], 'string', 'max' => 100],
-            [['file_path'], 'string', 'max' => 500],
+            // [['file_path'], 'string', 'max' => 500],
             [['paper_id'], 'exist', 'skipOnError' => true, 'targetClass' => Papers::className(), 'targetAttribute' => ['paper_id' => 'paper_id']],
             [['abs_id'], 'exist', 'skipOnError' => true, 'targetClass' => Abstracts::className(), 'targetAttribute' => ['abs_id' => 'abs_id']],
             [['rev_id'], 'exist', 'skipOnError' => true, 'targetClass' => Reviewer::className(), 'targetAttribute' => ['rev_id' => 'rev_id']],
+            [['file_path'], 'file', 'skipOnEmpty' => true, 'extensions' => ['pdf'], 'maxSize' => 1024 * 1024 * 2],
         ];
     }
 

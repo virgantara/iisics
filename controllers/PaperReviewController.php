@@ -171,8 +171,8 @@ class PaperReviewController extends Controller
 
                 Yii::$app->mailer->compose()
                 ->setTo($email)
-                ->setFrom([Yii::$app->params['supportEmail'] => 'IICICS Technical Program Committee'])
-                ->setSubject('[IICICS] Fullpaper Reviewer Assignment')
+                ->setFrom([Yii::$app->params['supportEmail'] => 'SNST Technical Program Committee'])
+                ->setSubject('[SNST] Fullpaper Reviewer Assignment')
                 ->setHtmlBody($emailTemplate)
                 ->send();
                 $transaction->commit();
@@ -273,9 +273,60 @@ class PaperReviewController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('success', "Data saved");
-            return $this->redirect(['papers/my-review']);
+        $s3config = Yii::$app->params['s3'];
+        $s3 = new \Aws\S3\S3Client($s3config);
+        $file_path = $model->file_path;
+
+        if ($model->load(Yii::$app->request->post())) {
+            $connection = \Yii::$app->db;
+            $transaction = $connection->beginTransaction();            
+            try {
+
+                $model->file_path = UploadedFile::getInstance($model, 'file_path');
+                if ($model->file_path) {
+                    
+                    $file_name = 'REV-'.'-'.date('YmdHis').'-'.$model->id.'.'.$model->file_path->extension;
+                    $s3_path = $model->file_path->tempName;
+                    $mime_type = $model->file_path->type;
+                                    
+                    $key = 'snst/'.date('Y').'/paper-review/'.$file_name;
+                     
+                    $insert = $s3->putObject([
+                         'Bucket' => 'seminar',
+                         'Key'    => $key,
+                         'Body'   => 'This is the Body',
+                         'SourceFile' => $s3_path,
+                         'ContentType' => $mime_type
+                    ]);
+
+                    
+                    $plainUrl = $s3->getObjectUrl('seminar', $key);
+                    $model->file_path = $plainUrl;
+                   
+                }
+            
+
+                if(empty($model->file_path)){
+                    $model->file_path = $file_path;
+                }
+
+                if($model->save()){
+                    $transaction->commit();
+                    Yii::$app->session->setFlash('success', "Data saved");
+                    return $this->redirect(['papers/my-review']);
+                }
+
+                else{
+                    throw new \Exception(\app\helpers\MyHelper::logError($model));
+                }
+            }
+            catch (\Exception $e) {
+                $transaction->rollBack();
+                $errors .= $e->getMessage();
+                Yii::$app->session->setFlash('danger', $errors);
+            }
+
+            
         }
 
         return $this->render('update', [
