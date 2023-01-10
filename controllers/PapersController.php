@@ -54,7 +54,7 @@ class PapersController extends Controller
                     ],
                     [
                         'actions' => [
-                            'update','delete','index'
+                            'update','delete','index','ajax-change'
                         ],
                         'allow' => true,
                         'roles' => ['admin'],
