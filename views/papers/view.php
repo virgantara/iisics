@@ -46,6 +46,8 @@ $list_status_abstrak = MyHelper::statusAbstract();
         
     ]) ?>
     <?php } ?>
+
+
     </div>
 </div>
 <div class="row">
@@ -103,7 +105,7 @@ $list_status_abstrak = MyHelper::statusAbstract();
                             'paper_recomendation',
                             'paper_revised_file',
                             'paper_final_file',
-                            
+
                         ],
                     ]) ?>
 
@@ -118,8 +120,21 @@ $list_status_abstrak = MyHelper::statusAbstract();
         <div class="panel">
             <div class="panel-heading">
                 <h3 class="panel-title">Paper Review Results</h3>
+
             </div>
             <div class="panel-body ">
+                <?php 
+                if(Yii::$app->user->can('participant')){
+                    echo Html::a('<i class="fa fa-upload"></i> Upload Paper Revision', ['paper-revision/create', 'paper_id' => $model->paper_id], ['class' => 'btn btn-primary']) ;
+                }
+ 
+                if(!empty($model->latestPaperRevision) && !empty($model->latestPaperRevision->paper_file))
+                    echo Html::a('<i class="fa fa-download"></i> Download Latest Revision',['paper-revision/download','id' => $model->latestPaperRevision->id],['class' => 'btn btn-success','target'=>'_blank','data-pjax'=>0]);
+                else{
+                    echo '<span style="color:red">None is uploaded yet</span>';
+                }
+                    
+                 ?>
                 <?php 
                 if(Yii::$app->user->can('admin')){
                  ?>
@@ -151,10 +166,12 @@ $list_status_abstrak = MyHelper::statusAbstract();
                 [
                     'attribute' => 'comment_from_reviewer',
                     'contentOptions' => ['width' => '35%'],
+                    'format' => 'raw',
                 ],
                 [
                     'class' => 'kartik\grid\EditableColumn',
                     'attribute' => 'response_from_author',
+                    'format' => 'raw',
                     'contentOptions' => ['width' => '25%'],
                     'readonly' => !Yii::$app->user->can('participant') && !Yii::$app->user->can('admin'),
                     'editableOptions' => [
@@ -168,7 +185,7 @@ $list_status_abstrak = MyHelper::statusAbstract();
                     'format' => 'raw',
                     'value' => function($data){
                         if(!empty($data->file_path))
-                            return Html::a('<i class="fa fa-download"></i> Download',['abstract-review/download','id' => $data->id],['class' => 'btn btn-primary','target'=>'_blank','data-pjax'=>0]);
+                            return Html::a('<i class="fa fa-download"></i> Download',['paper-review/download','id' => $data->id],['class' => 'btn btn-primary','target'=>'_blank','data-pjax'=>0]);
                         else{
                             return '<span style="color:red">Not uploaded</span>';
                         }
