@@ -103,8 +103,19 @@ $list_status_abstrak = MyHelper::statusAbstract();
                         'attributes' => [
                             'paper_status',
                             'paper_recomendation',
-                            'paper_revised_file',
-                            'paper_final_file',
+                            [
+                                'label' => 'Paper Latest Revision',
+                                'format' => 'raw',
+                                'value' => function($data){
+                                    if(!empty($data->latestPaperRevision) && !empty($data->latestPaperRevision->paper_file))
+                                        return Html::a('<i class="fa fa-download"></i> Download Latest Revision',['paper-revision/download','id' => $data->latestPaperRevision->id],['class' => 'btn btn-success','target'=>'_blank','data-pjax'=>0]);
+                                    else{
+                                        return '<span style="color:red">None is uploaded yet</span>';
+                                    }
+                                        
+                                }
+                            ],
+                            // 'paper_final_file',
 
                         ],
                     ]) ?>
@@ -128,12 +139,7 @@ $list_status_abstrak = MyHelper::statusAbstract();
                     echo Html::a('<i class="fa fa-upload"></i> Upload Paper Revision', ['paper-revision/create', 'paper_id' => $model->paper_id], ['class' => 'btn btn-primary']) ;
                 }
  
-                if(!empty($model->latestPaperRevision) && !empty($model->latestPaperRevision->paper_file))
-                    echo Html::a('<i class="fa fa-download"></i> Download Latest Revision',['paper-revision/download','id' => $model->latestPaperRevision->id],['class' => 'btn btn-success','target'=>'_blank','data-pjax'=>0]);
-                else{
-                    echo '<span style="color:red">None is uploaded yet</span>';
-                }
-                    
+                
                  ?>
                 <?php 
                 if(Yii::$app->user->can('admin')){
