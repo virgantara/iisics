@@ -17,7 +17,6 @@ use dosamigos\ckeditor\CKEditor;
         ]
     ]); ?>
      <?php echo $form->errorSummary($model,['header'=>'<div class="alert alert-danger">','footer'=>'</div>']); ?>
-     <?= $form->field($model, 'version')->textInput(['class'=>'form-control','type'=>'number']) ?>
     <?= $form->field($model, 'author_comment',['options' => ['tag' => false]])->widget(CKEditor::className(), [
         'options' => ['rows' => 6],
         'preset' => 'advance',  

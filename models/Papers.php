@@ -100,6 +100,16 @@ class Papers extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getPaperRevisions()
+    {
+        return $this->hasMany(PaperRevision::className(), ['paper_id' => 'paper_id']);
+    }
+
+    public function getLatestPaperRevision()
+    {
+        return $this->hasOne(PaperRevision::className(), ['paper_id' => 'paper_id'])->orderBy(['created_at' =>SORT_DESC]);
+    }
+
     public function getP()
     {
         return $this->hasOne(Participants::className(), ['pid' => 'pid']);
