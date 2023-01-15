@@ -72,7 +72,7 @@ class PaperRevisionController extends Controller
             Yii::$app->session->setFlash('danger', 'Oops, this file does not exist');
             return $this->redirect(['index']);
         }
-        $filename = 'FP-REV-'.$model->paper_id.'-'.$model->version.'.pdf';
+        $filename = 'FP-REV-'.$model->paper_id.'-'.rand(1,100).'.pdf';
 
         // Header content type
         header('Content-type: application/pdf');
