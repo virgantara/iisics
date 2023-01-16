@@ -41,6 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
                 [
                     'attribute' => 'rev_id',
+                    'header' => 'Reviewer',
                     'value' => function($data){
                         return (!empty($data->rev) ? $data->rev->rev_name : null);
                     },
@@ -48,6 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
                 [
                     'attribute' => 'abs_id',
+                    'header' => 'Abstract Title',
                     'value' => function($data){
                         return (!empty($data->abs) ? $data->abs->abs_title : null);
                     },
@@ -75,8 +77,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     'attribute' => 'file_path',
                     'format' => 'raw',
                     'value' => function($data){
-                        if(!empty($data->file_path))
-                            return Html::a('<i class="fa fa-download"></i> Download',['paper-review/download','id' => $data->id],['class' => 'btn btn-primary','target'=>'_blank','data-pjax'=>0]);
+                        if(!empty($data->paper) && !empty($data->paper->paper_file))
+                            return Html::a('<i class="fa fa-download"></i> Download',['papers/download','id' => $data->paper_id],['class' => 'btn btn-primary','target'=>'_blank','data-pjax'=>0]);
                         else{
                             return '<span style="color:red">Not uploaded</span>';
                         }

@@ -64,7 +64,7 @@ class PaperReviewSearch extends PaperReview
         ]);
 
         $query->andFilterWhere(['like', 'a.abs_title', $this->abs_id]);
-        $query->andFilterWhere(['like', 'r.name', $this->rev_id]);
+        $query->andFilterWhere(['like', 'r.rev_name', $this->rev_id]);
         $query->andFilterWhere(['like', 'response_from_author', $this->response_from_author]);
         $query->andFilterWhere(['like', 'comment_from_reviewer', $this->comment_from_reviewer]);
 

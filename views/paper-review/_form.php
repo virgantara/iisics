@@ -30,7 +30,7 @@ $list_status = MyHelper::reviewerResultStatus();
         echo '</p><h3>Fullpaper</h3><p>';
 
         if(!empty($model->paper->paper_file))
-            echo Html::a('<i class="fa fa-download"></i> Download',['papers/download','id' => $model->paper_id],['class' => '','target'=>'_blank']);
+            echo Html::a('<i class="fa fa-download"></i> Download',['papers/download','id' => $model->paper_id],['class' => 'btn btn-primary','target'=>'_blank']);
         else{
             echo '<span style="color:red">Not uploaded</span>';
         }
