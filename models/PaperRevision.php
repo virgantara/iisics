@@ -41,7 +41,7 @@ class PaperRevision extends \yii\db\ActiveRecord
             [['id'], 'string', 'max' => 50],
             [['id'], 'unique'],
             [['paper_id'], 'exist', 'skipOnError' => true, 'targetClass' => Papers::className(), 'targetAttribute' => ['paper_id' => 'paper_id']],
-            [['paper_file'], 'file', 'skipOnEmpty' => true, 'extensions' => ['pdf'], 'maxSize' => 1024 * 1024 * 2],
+            [['paper_file'], 'file', 'skipOnEmpty' => true, 'extensions' => ['docx','doc'], 'maxSize' => 1024 * 1024 * 2],
         ];
     }
 

@@ -72,11 +72,11 @@ class PaperRevisionController extends Controller
             Yii::$app->session->setFlash('danger', 'Oops, this file does not exist');
             return $this->redirect(['index']);
         }
-        $filename = 'FP-REV-'.$model->paper_id.'-'.rand(1,100).'.pdf';
-
+        // $filename = 'FP-REV-'.$model->paper_id.'-'.rand(1,100).'.pdf';
+        $filename = basename($file);
         // Header content type
-        header('Content-type: application/pdf');
-        header('Content-Disposition: inline; filename="' . $filename . '"');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
         header('Content-Transfer-Encoding: binary');
         header('Accept-Ranges: bytes');
           

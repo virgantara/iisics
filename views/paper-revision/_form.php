@@ -29,8 +29,8 @@ use dosamigos\ckeditor\CKEditor;
 
     <div class="form-group">
         <label for="">File Revision</label>
-        <?= $form->field($model, 'paper_file',['options' => ['tag' => false]])->fileInput(['accept'=>'application/pdf','class'=>'form-control'])->label(false) ?>
-        <small>Maxsize: 2 MB, filetype: pdf</small>
+        <?= $form->field($model, 'paper_file',['options' => ['tag' => false]])->fileInput(['class'=>'form-control'])->label(false) ?>
+        <small>Maxsize: 2 MB, filetype: docx, doc</small>
     </div>
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
