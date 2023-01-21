@@ -169,11 +169,13 @@ $list_status_abstrak = MyHelper::statusAbstract();
 
                 [
                     'attribute' => 'comments',
+                    'format' => 'raw',
                     'contentOptions' => ['width' => '35%'],
                 ],
                 [
                     'class' => 'kartik\grid\EditableColumn',
                     'attribute' => 'response',
+                    'format' => 'raw',
                     'contentOptions' => ['width' => '25%'],
                     'readonly' => !Yii::$app->user->can('participant') && !Yii::$app->user->can('admin'),
                     'editableOptions' => [
