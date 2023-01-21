@@ -41,14 +41,16 @@ $list_status_abstrak = MyHelper::statusAbstract();
             ],
             [
                 'attribute' => 'abs_id',
-                'contentOptions' => ['width' => '25%'],
+                'contentOptions' => ['width' => '30%'],
+                'format' => 'raw',
                 'value' => function($data){
                     return (!empty($data->abs) ? $data->abs->abs_title : null);
                 }
             ],
             [
                 'attribute' => 'paper_info',
-                // 'contentOptions' => ['width' => '20%']
+                'format' => 'raw',
+                'contentOptions' => ['width' => '30%']
             ],
             [
                 'attribute' => 'paper_status',
